@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+## Spring Security学习笔记
 
-You can use the [editor on GitHub](https://github.com/MengJiapeng/mengjiapeng.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+### 前言
+本篇文章是我学习Spring Security时的笔记，所有内容均参考自[Spring官网](https://spring.io)的[这篇文章](https://spring.io/guides/topicals/spring-security-architecture/)，鉴于我的英文水平有限，大家在阅读本篇文章时若觉得有逻辑不通的地方，可以参考原文。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+保证应用安全主要要解决两件事情：Authentication（你是谁）和Access control(or Authorization)（你被允许做什么）。
 
-### Markdown
+### Authentication
+Authentication最主要的接口是`AuthenticationManager`，这个接口只有一个方法:
+<pre>
+public interface AuthenticationManager {
+    Authentication authenticate(Authentication authentication) throws AuthenticationException;
+}
+</pre>
+在`authenticate`方法中可能会出现以下3种情况:
+1. 若认证成功，返回一个`Authentication`对象（`authenticated = true`）
+2. 若认证失败，抛出`AuthenticationException`
+3. 若无法决定，返回`null`
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MengJiapeng/mengjiapeng.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
